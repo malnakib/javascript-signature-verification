@@ -20,12 +20,11 @@ describe("verifySignature", () => {
   });
   it("throws an error when files are not found", () => {
     const invalidPaths = {
-      payload: "./nonexistent-payload.json",
-      signature: "./nonexistent-signature.txt",
-      publicKey: "./nonexistent-public.pem",
+      ...paths,
+      payload: "./not-exist-payload.json",
     };
     expect(() => signatureVerifier({ paths: invalidPaths })).toThrow(
-      "ENOENT: no such file or directory, open './nonexistent-payload.json"
+      "ENOENT: no such file or directory, open './not-exist-payload.json"
     );
   });
 });
